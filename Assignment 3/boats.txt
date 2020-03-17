@@ -1,0 +1,100 @@
+
+Intro To Database Systems.  Assignment 3
+
+What is this about?
+
+    This schema represents a boat dealership which needs to keep track of inventory,
+        buyers, and transactions.
+
+    More importantly, it is a many-to-many relationship, and is representative of
+        relations that aries frequently in real-world database systems.
+
+    In this assignment, you will load data, work with a many-to-many relation,
+        and also perform several queries that require inner and outer joins.
+
+
+Setup, DDL, and data loading:
+
+    Look at the data in the files, and determine the data type of each column.
+    Write DDL (CREATE TABLE) statements that will create tables
+        with appropriate datatypes for each column, into which the data can be loaded.
+
+    Consider how the existing data will be used,
+        and how new data will be added in the future.
+
+    Add any constraints to your columns that you feel will be necessary in the future.
+        For example:
+            Are there some columns that should not be NULL ?
+            Are there some columns that should be left alone - i.e., allowed to be NULL?
+            Are there some columns that should be designated FOREIGN KEY or PRIMARY KEY?
+
+    After defining the tables, load the data into your tables.
+        You may do this by using INSERT statements,
+        or by directly loading the .csv files, by calling COPY (or \COPY).
+        Examples of both methods have been given in previous assignments and demos.
+
+    Queries with joins:
+
+        Once the data is loaded into your tables, develop queries that will answer
+        the questions that follow.
+
+    Hint: While you are experimenting with how your tables should be designed,
+                you can drop and re-create your tables each time you run your
+                table-creation script by using the following:
+
+                DROP TABLE IF EXISTS <table_name> ;
+
+                CREATE TABLE .. (
+                    <column_name> <data_type> <constraints>,
+                    <column_name> <data_type> <constraints>,
+                    ...
+                );
+
+            This will allow you test and see if your data-design ideas are working,
+                and start with a clean slate on the next run if you make changes.
+
+            If you created FOREIGN KEYs, you will need to use the term CASCADE.
+
+
+Questions about this data:
+
+    1.  We want to spend some advertising money - where should we spend it?
+            I.e., What is the best referral source of our buyers?
+
+    2.  Which of our customers has not bought a boat yet?
+
+    3.  Which boats do we have in inventory - i.e., have not sold?
+
+    4.  What boat did Alan Weston buy?
+
+    5.  Who are our VIP customers?
+        I.e., Has anyone bought more than one boat?
+
+        Hint:  Think 'WITH' clause, subquery, or UNION.
+            It's probably adviseable to do a subquery first, to get customer id's that
+            appear in the 'transactions' table more than once.
+
+            Then, after we have those, we can join them with the 'buyers' table
+            to get the first and last names.
+
+
+How to submit:
+
+    Turn in the following (by email).
+
+        1. The DDL you used to create the tables and load data into them.
+            (ONE script)
+
+        2. A query script - which answers the questions above.
+            (ONE script)
+
+    Submit TWO scripts total - both SQL files.
+
+    Try to make your SQL neat and legible.
+
+    Your SQL should not scroll off the page (left-to-right),
+        or contain large regions of commented-out code.
+
+    A grade of zero will be given for zip files, text pasted into the body of an email,
+        MS Word files, and all other submissions except what is explicitly definde above.
+
